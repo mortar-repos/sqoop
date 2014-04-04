@@ -517,7 +517,7 @@
   </target>
 
   <target name="package"
-      depends="jar-all,compile-all,docs,ivy-retrieve-redist,scripts"
+      depends="jar-all,compile-all,ivy-retrieve-redist,scripts"
       description="Create a redistributable package">
 
     <mkdir dir="${dist.dir}"/>
@@ -570,20 +570,6 @@
       <fileset dir="${lib.dir}">
         <include name="**/*" />
         <exclude name="ivy*" />
-      </fileset>
-    </copy>
-
-    <!-- copy in documentation build artifacts -->
-    <copy todir="${dist.dir}/docs" includeEmptyDirs="false" flatten="false">
-      <fileset dir="${build.dir}/docs">
-        <include name="**/*.html" />
-        <include name="**/*.css" />
-        <include name="images/**" />
-      </fileset>
-    </copy>
-    <copy todir="${dist.dir}/docs/man" includeEmptyDirs="false" flatten="false">
-      <fileset dir="${build.dir}/docs">
-        <include name="**/*.gz" />
       </fileset>
     </copy>
 
