@@ -143,18 +143,17 @@ public class ImportTool extends com.cloudera.sqoop.tool.BaseSqoopTool {
           options.getIncrementalMode();
       switch (incrementalMode) {
       case AppendRows:
-        LOG.info(" --incremental append");
+        // LOG.info(" --incremental append");
         break;
       case DateLastModified:
-        LOG.info(" --incremental lastmodified");
+        // LOG.info(" --incremental lastmodified");
         break;
       default:
         LOG.warn("Undefined incremental mode: " + incrementalMode);
         break;
       }
-      LOG.info("  --check-column " + options.getIncrementalTestColumn());
-      LOG.info("  --last-value " + options.getIncrementalLastValue());
-      LOG.info("(Consider saving this with 'sqoop job --create')");
+      LOG.info("  column: " + options.getIncrementalTestColumn());
+      LOG.info("  last-value: " + options.getIncrementalLastValue());
     }
   }
 

@@ -81,7 +81,7 @@ public class CompilationManager {
     String hadoopMapRedHome = options.getHadoopMapRedHome();
 
     if (null == hadoopMapRedHome) {
-      LOG.info("$HADOOP_MAPRED_HOME is not set");
+      // LOG.info("$HADOOP_MAPRED_HOME is not set");
       return Jars.getJarPathForClass(JobConf.class);
     }
 
@@ -90,7 +90,7 @@ public class CompilationManager {
     }
 
     File hadoopMapRedHomeFile = new File(hadoopMapRedHome);
-    LOG.info("HADOOP_MAPRED_HOME is " + hadoopMapRedHomeFile.getAbsolutePath());
+    // LOG.info("HADOOP_MAPRED_HOME is " + hadoopMapRedHomeFile.getAbsolutePath());
     File [] entries = hadoopMapRedHomeFile.listFiles();
 
     if (null == entries) {
@@ -313,7 +313,7 @@ public class CompilationManager {
 
     String jarFilename = getJarFilename();
 
-    LOG.info("Writing jar file: " + jarFilename);
+    // LOG.info("Writing jar file: " + jarFilename);
 
     File jarFileObj = new File(jarFilename);
     if (jarFileObj.exists()) {

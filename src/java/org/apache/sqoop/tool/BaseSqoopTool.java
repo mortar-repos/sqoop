@@ -843,8 +843,8 @@ public abstract class BaseSqoopTool extends com.cloudera.sqoop.tool.SqoopTool {
     }
 
     if (in.hasOption(PASSWORD_ARG)) {
-      LOG.warn("Setting your password on the command-line is insecure. "
-          + "Consider using -" + PASSWORD_PROMPT_ARG + " instead.");
+      // LOG.warn("Setting your password on the command-line is insecure. "
+      //     + "Consider using -" + PASSWORD_PROMPT_ARG + " instead.");
       out.setPassword(in.getOptionValue(PASSWORD_ARG));
     }
 
