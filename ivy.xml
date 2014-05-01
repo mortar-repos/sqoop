@@ -46,12 +46,15 @@ under the License.
       extends="common,runtime,hbase,hcatalog" />
     <conf name="hadoop200" visibility="private"
       extends="common,runtime,hbase,hcatalog" />
+    <conf name="hadoopcustom" visibility="private"
+      extends="common,runtime,hbase,hcatalog" />
 
     <conf name="test" visibility="private" extends="common,runtime"/>
     <conf name="hadoop23test" visibility="private" extends="test,hadoop23" />
     <conf name="hadoop20test" visibility="private" extends="test,hadoop20" />
     <conf name="hadoop100test" visibility="private" extends="test,hadoop100" />
     <conf name="hadoop200test" visibility="private" extends="test,hadoop200" />
+    <conf name="hadoopcustomtest" visibility="private" extends="test,hadoopcustom" />
 
     <!-- We don't redistribute everything we depend on (e.g., Hadoop itself);
          anything which Hadoop itself also depends on, we do not ship.
@@ -119,6 +122,14 @@ under the License.
       rev="${hadoop.version}" conf="hadoop20->default"/>
     <dependency org="org.apache.hadoop" name="hadoop-test"
       rev="${hadoop.version}" conf="hadoop20test->default"/>
+
+    <!-- Dependencies for Custom Hadoop -->
+    <dependency org="org.apache.hadoop" name="hadoop-test"
+      rev="1.0.3" conf="hadoopcustom->default"/>
+    <dependency org="org.apache.hadoop" name="hadoop-core" rev="${hadoop.version}" conf="hadoopcustom->default">
+      <artifact name="hadoop-core" type="jar" url="${hadoop.custom.jar.url}"/>
+    </dependency>
+    <dependency org="com.google.guava" name="guava" rev="12.0" conf="hadoopcustom->default" />
 
     <!-- Common dependencies for Sqoop -->
     <dependency org="commons-cli" name="commons-cli"
