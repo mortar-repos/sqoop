@@ -621,6 +621,7 @@
       </patternset>
       <mapper type="regexp" from="^hadoop-[.0-9\-a-z]*/(.*)$$" to="hadoop/\1"/>
     </untar>
+    <copy file="${basedir}/conf/hadoop-log4j.properties" tofile="${basedir}/hadoop/conf/log4j.properties" overwrite="true"/>
   </target>
 
   <target name="tar" depends="package" description="Create release tarball">
