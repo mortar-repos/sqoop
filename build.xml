@@ -77,17 +77,6 @@
     </elseif>
 
     <elseif>
-      <equals arg1="${hadoopversion}" arg2="custom" />
-      <then>
-        <property name="hadoop.version" value="1.0.3" />
-        <property name="hbase.version" value="0.92.0" />
-        <property name="zookeeper.version" value="3.4.2" />
-        <property name="hadoop.version.full" value="1.0.0" />
-        <property name="hcatalog.version" value="0.11.0" />
-      </then>
-    </elseif>
-
-    <elseif>
       <equals arg1="${hadoopversion}" arg2="200" />
       <then>
         <property name="hadoop.version" value="2.0.4-alpha" />
@@ -528,7 +517,7 @@
   </target>
 
   <target name="package"
-      depends="jar-all,compile-all,ivy-retrieve-redist,scripts,hadoop-dist"
+      depends="jar-all,compile-all,ivy-retrieve-redist,scripts"
       description="Create a redistributable package">
 
     <mkdir dir="${dist.dir}"/>
@@ -611,16 +600,6 @@
     <copy file="${dist.dir}/conf/sqoop-site-template.xml"
         tofile="${dist.dir}/conf/sqoop-site.xml"
         overwrite="true" />
-  </target>
-
-  <target name="hadoop-dist">
-    <get src="${hadoop.custom.dist.url}" dest="${build.dir}/hadoop-dist.tgz" usetimestamp="true"/>
-    <untar src="${build.dir}/hadoop-dist.tgz" dest="${basedir}" compression="gzip">
-      <patternset>
-        <include name="hadoop-*/**/*"/>
-      </patternset>
-      <mapper type="regexp" from="^hadoop-[.0-9\-a-z]*/(.*)$$" to="hadoop/\1"/>
-    </untar>
   </target>
 
   <target name="tar" depends="package" description="Create release tarball">
